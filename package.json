@@ -17,6 +17,7 @@
     "webpack": "^1.12.1"
   },
   "dependencies": {
+    "alt": "^0.17.3",
     "react": "^0.13.3",
     "react-bootstrap": "^0.25.2",
     "react-router": "^0.13.3",
