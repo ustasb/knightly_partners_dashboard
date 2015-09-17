@@ -1,4 +1,5 @@
 import SimulationEngine from "./sim_engine/engine"
+import View from "./view"
 
 require("../css/app.scss");
 
@@ -24,4 +25,5 @@ let engine = new SimulationEngine({
   updatePos: (user) => { }
 });
 
+View.init();
 engine.start();
