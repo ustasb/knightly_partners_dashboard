@@ -1,0 +1,28 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+#knightly-app {
+  height: 100%;
+}
+
+#top-bar-container {
+  background-color: red;
+  height: 60px;
+}
+
+#bottom-bar-container {
+  // This height needs to be dynamically resized.
+  height: 500px;
+}
+
+#map-container {
+  background-color: blue;
+  height: 100%;
+}
+
+#right-menu-container {
+  background-color: green;
+  height: 100%;
+}

@@ -9,6 +9,7 @@ const EVENTS = {
   officerRescue: (officer, student) => {},
   newStudent: (student) => {},
   studentIsOkay: (student) => {},
+  updatePos: (user) => {},
 };
 
 export default class SimulationEngine {
@@ -45,6 +46,7 @@ export default class SimulationEngine {
       }
 
       officer.update(this.rescueStudent.bind(this));
+      this.eventCbs.updatePos(officer);
     });
   }
 
@@ -61,6 +63,7 @@ export default class SimulationEngine {
         }
       } else {
         student.update();
+        this.eventCbs.updatePos(student);
       }
     });
   }

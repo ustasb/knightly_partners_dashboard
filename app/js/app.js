@@ -1,5 +1,7 @@
 import SimulationEngine from "./sim_engine/engine"
 
+require("../css/app.scss");
+
 let engine = new SimulationEngine({
   officerOnDuty: (officer) => {
     console.log(`officer ${officer.id} is on duty`);
@@ -19,6 +21,7 @@ let engine = new SimulationEngine({
   studentIsOkay: (student) => {
     console.log(`student ${student.id} is now okay`);
   },
+  updatePos: (user) => { }
 });
 
 engine.start();
