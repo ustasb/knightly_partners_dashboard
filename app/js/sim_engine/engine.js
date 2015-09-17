@@ -3,7 +3,7 @@ import Student from "./student"
 import Officer from "./officer"
 
 const EVENTS = {
-  officerOnDuty: (officer) => {},
+  newOfficer: (officer) => {},
   officerInPursuit: (officer, student) => {},
   officerOffPursuit: (officer, student) => {},
   officerRescue: (officer, student) => {},
@@ -72,7 +72,7 @@ export default class SimulationEngine {
     if (this.officers.length < this.maxOfficers) {
       let officer = new Officer()
       this.officers.push(officer);
-      this.eventCbs.officerOnDuty(officer);
+      this.eventCbs.newOfficer(officer);
     }
 
     if (this.students.length < this.maxStudents) {

@@ -1,29 +1,35 @@
-import SimulationEngine from "./sim_engine/engine"
-import View from "./view"
-
 require("../css/app.scss");
 
-let engine = new SimulationEngine({
-  officerOnDuty: (officer) => {
-    console.log(`officer ${officer.id} is on duty`);
-  },
-  officerInPursuit: (officer, student) => {
-    console.log(`officer ${officer.id} is pursuing student ${student.id}`);
-  },
-  officerOffPursuit: (officer, student) => {
-    console.log(`officer ${officer.id} is no longer pursuing student ${student.id}`);
-  },
-  officerRescue: (officer, student) => {
-    console.log(`officer ${officer.id} rescued student ${student.id}`);
-  },
-  newStudent: (student) => {
-    console.log(`student ${student.id} has status: ${student.status}`);
-  },
-  studentIsOkay: (student) => {
-    console.log(`student ${student.id} is now okay`);
-  },
-  updatePos: (user) => { }
-});
+import View from "./view"
+import SimulationEngine from "./sim_engine/engine"
+import DeviceUserActions from "./actions/device_user_actions"
+import DeviceUserStore from "./stores/device_user_store"
 
 View.init();
+
+let engine = new SimulationEngine({
+  newOfficer: (officer) => {
+    DeviceUserActions.newOfficer(officer);
+  },
+  officerInPursuit: (officer, student) => {
+    DeviceUserActions.officerInPursuit(officer, student);
+  },
+  officerOffPursuit: (officer, student) => {
+    DeviceUserActions.officerOffPursuit(officer, student);
+  },
+  officerRescue: (officer, student) => {
+    DeviceUserActions.officerRescue(officer, student);
+  },
+  newStudent: (student) => {
+    DeviceUserActions.newStudent(student);
+  },
+  studentIsOkay: (student) => {
+    DeviceUserActions.studentIsOkay(student);
+  },
+  updatePos: (user) => {
+    console.log(DeviceUserStore.getOfficers());
+    console.log(DeviceUserStore.getStudents());
+  }
+});
+
 engine.start();
