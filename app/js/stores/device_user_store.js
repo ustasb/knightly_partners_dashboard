@@ -10,6 +10,7 @@ class DeviceUserStore {
       handleNewOfficer: DeviceUserActions.NEW_OFFICER,
       handleNewStudent: DeviceUserActions.NEW_STUDENT,
       handleUpdatePos: DeviceUserActions.UPDATE_POS,
+      handleStudentIsOkay: DeviceUserActions.STUDENT_IS_OKAY,
     });
 
     this.exportPublicMethods({
@@ -30,6 +31,10 @@ class DeviceUserStore {
 
   handleUpdatePos(user) {
     return true; // Emit that user position has changed.
+  }
+
+  handleStudentIsOkay(student) {
+    return true;
   }
 
   // Public Methods

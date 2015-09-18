@@ -29,6 +29,7 @@ class DeviceUserActions {
 
   studentIsOkay(student) {
     log(`student ${student.id} is now okay`);
+    this.dispatch(student);
   }
 
   updatePos(user) {

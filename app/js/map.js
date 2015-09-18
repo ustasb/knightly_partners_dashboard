@@ -33,7 +33,7 @@ export default class Map {
       this.markers[user.id] = new google.maps.Marker({
         map: this.map,
         position: user.pos,
-        icon: getProfileMarkerImage(user.id, imageData, "police"),
+        icon: getProfileMarkerImage(user, imageData),
       });
     }
   }
