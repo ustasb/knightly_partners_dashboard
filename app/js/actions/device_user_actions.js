@@ -30,6 +30,10 @@ class DeviceUserActions {
   studentIsOkay(student) {
     log(`student ${student.id} is now okay`);
   }
+
+  updatePos(user) {
+    this.dispatch(user);
+  }
 }
 
 export default alt.createActions(DeviceUserActions);

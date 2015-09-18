@@ -9,6 +9,7 @@ class DeviceUserStore {
     this.bindListeners({
       handleNewOfficer: DeviceUserActions.NEW_OFFICER,
       handleNewStudent: DeviceUserActions.NEW_STUDENT,
+      handleUpdatePos: DeviceUserActions.UPDATE_POS,
     });
 
     this.exportPublicMethods({
@@ -25,6 +26,10 @@ class DeviceUserStore {
 
   handleNewStudent(student) {
     this.students[student.id] = student;
+  }
+
+  handleUpdatePos(user) {
+    return true; // Emit that user position has changed.
   }
 
   // Public Methods

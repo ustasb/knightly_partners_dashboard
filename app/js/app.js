@@ -2,10 +2,18 @@ require("../css/app.scss");
 
 import View from "./view"
 import SimulationEngine from "./sim_engine/engine"
+import Map from "./map"
 import DeviceUserActions from "./actions/device_user_actions"
 import DeviceUserStore from "./stores/device_user_store"
 
 View.init();
+
+let map = new Map("map-container", {
+  center: SimulationEngine.CENTER_POS,
+  zoom: 17,
+});
+
+DeviceUserStore.listen(map.render.bind(map));
 
 let engine = new SimulationEngine({
   newOfficer: (officer) => {
@@ -27,8 +35,7 @@ let engine = new SimulationEngine({
     DeviceUserActions.studentIsOkay(student);
   },
   updatePos: (user) => {
-    console.log(DeviceUserStore.getOfficers());
-    console.log(DeviceUserStore.getStudents());
+    DeviceUserActions.updatePos(user);
   }
 });
 
