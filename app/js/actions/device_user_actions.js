@@ -20,6 +20,7 @@ class DeviceUserActions {
 
   officerRescue(officer, student) {
     log(`officer ${officer.id} rescued student ${student.id}`);
+    this.dispatch(student);
   }
 
   newStudent(student) {

@@ -14,6 +14,8 @@ export default class Map {
     const students = DeviceUserStore.getStudents();
     const officers = DeviceUserStore.getOfficers();
 
+    this.updatedMarkers = [];
+
     _.each(students, (student) => {
       this.createOrMoveMarker(student)
     });
@@ -21,6 +23,8 @@ export default class Map {
     _.each(officers, (officer) => {
       this.createOrMoveMarker(officer)
     });
+
+    this.removeStaleMarkers();
   }
 
   createOrMoveMarker(user) {
@@ -34,11 +38,27 @@ export default class Map {
         map: this.map,
         position: user.pos,
       });
+
+      // Officer icons should sit above the rest.
+      if (user.constructor.name === "Officer") {
+        marker.setZIndex(9999 + user.id);
+      }
     }
 
     let icon = getProfileMarkerImage(user, imageData)
     if (marker.getIcon() !== icon) {
       marker.setIcon(icon);
     }
+
+    this.updatedMarkers.push(user.id);
+  }
+
+  removeStaleMarkers() {
+    const staleMarkersKeys = _.difference(_.map(_.keys(this.markers), _.parseInt), this.updatedMarkers);
+
+    _.each(staleMarkersKeys, (key) => {
+      this.markers[key].setMap(null);
+      delete this.markers[key];
+    });
   }
 }

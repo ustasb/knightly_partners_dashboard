@@ -28,7 +28,7 @@ export default class Student extends User {
       this.setNewEndPos();
     }
 
-    if (Math.random() > 0.95) {
+    if (Math.random() > 0.98) {
       this.setStatus("okay");
     }
   }

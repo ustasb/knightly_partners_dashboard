@@ -25,5 +25,5 @@ const LOCATIONS = [
 ];
 
 export function newPos() {
-  return _.sample(LOCATIONS);
+  return _.clone(_.sample(LOCATIONS));
 }

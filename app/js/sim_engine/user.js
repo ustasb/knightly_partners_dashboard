@@ -3,7 +3,7 @@ import { newPos } from "./lat_lngs"
 
 export default class User {
   constructor() {
-    this.id = _.uniqueId();
+    this.id = _.parseInt(_.uniqueId());
     this.pos = newPos();
     this.end = newPos();
   }
