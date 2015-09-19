@@ -1,10 +1,10 @@
 const CANVAS_SIZE = 80;
 const MARKER_RADIUS = (CANVAS_SIZE / 2) * 0.70; // Make room for the box shadow.
 const PROFILE_COLORS = {
-  "police": "blue",
-  "distress": "orange",
-  "panic": "red",
-  "okay": "green",
+  police: "#57D3F1",
+  distress: "#F5A623",
+  panic: "#D0021B",
+  okay: "#2ECC71",
 };
 
 let canvas = document.getElementById("profile-marker-drawing-board");
@@ -18,6 +18,8 @@ export function getProfileMarkerImage(user, profileImage) {
   const center = CANVAS_SIZE / 2;
 
   image.src = profileImage; // Base64 only.
+
+  ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 
   ctx.save();
   ctx.fillStyle = getColorForProfileType(user);

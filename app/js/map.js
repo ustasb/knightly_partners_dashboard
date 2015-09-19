@@ -30,11 +30,12 @@ export default class Map {
       let latLng = new google.maps.LatLng(user.pos.lat, user.pos.lng);
       marker.setPosition(latLng);
     } else {
-      this.markers[user.id] = new google.maps.Marker({
+      marker = this.markers[user.id] = new google.maps.Marker({
         map: this.map,
         position: user.pos,
-        icon: getProfileMarkerImage(user, imageData),
       });
     }
+
+    marker.setIcon(getProfileMarkerImage(user, imageData));
   }
 }
