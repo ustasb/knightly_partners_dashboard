@@ -15,7 +15,7 @@ const EVENTS = {
 export default class SimulationEngine {
   constructor(eventCbs = {}) {
     this.maxStudents = 1;
-    this.maxOfficers = 1;
+    this.maxOfficers = 2;
     this.updateDelayMs = 1000;
 
     this.eventCbs = _.merge(_.clone(EVENTS), eventCbs);

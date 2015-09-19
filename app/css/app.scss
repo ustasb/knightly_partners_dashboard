@@ -26,3 +26,10 @@ html, body {
   background-color: green;
   height: 100%;
 }
+
+// Get this out of sight.
+#profile-marker-drawing-board {
+  position: absolute;
+  top: 0;
+  left: -300px;
+}
