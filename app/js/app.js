@@ -1,5 +1,6 @@
 require("../css/app.scss");
 
+import $ from "jquery"
 import View from "./view"
 import SimulationEngine from "./sim_engine/engine"
 import Map from "./map"
@@ -44,4 +45,24 @@ let engine = new SimulationEngine({
   }
 });
 
+(function () {
+  let prevUpdateDelay = null;
+  let fired = false;
+
+  $(window).keydown((e) => {
+    if (!fired && e.keyCode === 32) {
+      prevUpdateDelay = engine.updateDelayMs;
+      engine.updateDelayMs = 30;
+      fired = true;
+    }
+  }).keyup((e) => {
+    if (e.keyCode === 32) {
+      engine.updateDelayMs = prevUpdateDelay;
+      fired = false;
+    }
+  });
+}());
+
 engine.start();
+
+
