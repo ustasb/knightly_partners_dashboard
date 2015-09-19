@@ -12,7 +12,10 @@ View.init();
 let map = new Map("map-container", {
   center: SimulationEngine.CENTER_POS,
   zoom: 17,
-  styles: MapStyles
+  styles: MapStyles,
+  disableDefaultUI: true,
+  zoomControl: true,
+  scaleControl: true,
 });
 
 DeviceUserStore.listen(map.render.bind(map));
