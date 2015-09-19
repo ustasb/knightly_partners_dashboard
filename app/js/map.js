@@ -36,6 +36,9 @@ export default class Map {
       });
     }
 
-    marker.setIcon(getProfileMarkerImage(user, imageData));
+    let icon = getProfileMarkerImage(user, imageData)
+    if (marker.getIcon() !== icon) {
+      marker.setIcon(icon);
+    }
   }
 }
