@@ -5,6 +5,7 @@ const PROFILE_COLORS = {
   distress: "#F5A623",
   panic: "#D0021B",
   okay: "#2ECC71",
+  rescued: "#2ECC71",
 };
 
 let canvas = document.getElementById("profile-marker-drawing-board");
