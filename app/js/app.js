@@ -45,7 +45,11 @@ let engine = new SimulationEngine({
   }
 });
 
-(function () {
+initDemoControls();
+
+engine.start();
+
+function initDemoControls() {
   let prevUpdateDelay = null;
   let fired = false;
 
@@ -79,8 +83,4 @@ let engine = new SimulationEngine({
 
     fired = false;
   });
-}());
-
-engine.start();
-
-
+}
