@@ -49,17 +49,35 @@ let engine = new SimulationEngine({
   let prevUpdateDelay = null;
   let fired = false;
 
+  const SPACE_KEY = 32;
+  const S_KEY = 83;
+
   $(window).keydown((e) => {
-    if (!fired && e.keyCode === 32) {
-      prevUpdateDelay = engine.updateDelayMs;
-      engine.updateDelayMs = 30;
-      fired = true;
+    if (fired) return;
+
+    switch(e.keyCode) {
+      case SPACE_KEY:
+        prevUpdateDelay = engine.updateDelayMs;
+        engine.updateDelayMs = 30;
+        break;
+      case S_KEY:
+        if (engine.running) {
+          engine.stop();
+        } else {
+          engine.start();
+        }
+        break;
     }
+
+    fired = true;
   }).keyup((e) => {
-    if (e.keyCode === 32) {
-      engine.updateDelayMs = prevUpdateDelay;
-      fired = false;
+    switch(e.keyCode) {
+      case SPACE_KEY:
+        engine.updateDelayMs = prevUpdateDelay;
+        break;
     }
+
+    fired = false;
   });
 }());
 
