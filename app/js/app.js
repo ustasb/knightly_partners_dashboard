@@ -1,55 +1,67 @@
 require("../css/app.scss");
 
 import $ from "jquery"
-import View from "./view"
+import { initView } from "./view"
 import SimulationEngine from "./sim_engine/engine"
+
 import Map from "./map"
 import MapStyles from "./utils/map_styles"
 import DeviceUserActions from "./actions/device_user_actions"
 import DeviceUserStore from "./stores/device_user_store"
 
-View.init();
+initApp();
 
-let map = new Map("map-container", {
-  center: SimulationEngine.CENTER_POS,
-  zoom: 17,
-  styles: MapStyles,
-  disableDefaultUI: true,
-  zoomControl: true,
-  scaleControl: true,
-});
+function initApp() {
+  initView();
 
-DeviceUserStore.listen(map.render.bind(map));
+  let map = mapInit();
+  let engine = initEngine();
 
-let engine = new SimulationEngine({
-  newOfficer: (officer) => {
-    DeviceUserActions.newOfficer(officer);
-  },
-  officerInPursuit: (officer, student) => {
-    DeviceUserActions.officerInPursuit(officer, student);
-  },
-  officerOffPursuit: (officer, student) => {
-    DeviceUserActions.officerOffPursuit(officer, student);
-  },
-  officerRescue: (officer, student) => {
-    DeviceUserActions.officerRescue(officer, student);
-  },
-  newStudent: (student) => {
-    DeviceUserActions.newStudent(student);
-  },
-  studentIsOkay: (student) => {
-    DeviceUserActions.studentIsOkay(student);
-  },
-  updatePos: (user) => {
-    DeviceUserActions.updatePos(user);
-  }
-});
+  DeviceUserStore.listen(map.render.bind(map));
 
-initDemoControls();
+  initDemoControls(engine);
 
-engine.start();
+  engine.start();
+}
 
-function initDemoControls() {
+function initEngine() {
+  return new SimulationEngine({
+    newOfficer: (officer) => {
+      DeviceUserActions.newOfficer(officer);
+    },
+    officerInPursuit: (officer, student) => {
+      DeviceUserActions.officerInPursuit(officer, student);
+    },
+    officerOffPursuit: (officer, student) => {
+      DeviceUserActions.officerOffPursuit(officer, student);
+    },
+    officerRescue: (officer, student) => {
+      DeviceUserActions.officerRescue(officer, student);
+    },
+    newStudent: (student) => {
+      DeviceUserActions.newStudent(student);
+    },
+    studentIsOkay: (student) => {
+      DeviceUserActions.studentIsOkay(student);
+    },
+    updatePos: (user) => {
+      DeviceUserActions.updatePos(user);
+    }
+  });
+}
+
+function mapInit() {
+  return new Map("map-container", {
+    center: SimulationEngine.CENTER_POS,
+    zoom: 17,
+    styles: MapStyles,
+    disableDefaultUI: true,
+    zoomControl: true,
+    scaleControl: true,
+  });
+}
+
+function initDemoControls(engine) {
   let prevUpdateDelay = null;
   let fired = false;
 

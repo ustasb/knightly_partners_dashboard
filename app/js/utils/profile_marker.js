@@ -1,7 +1,9 @@
 import _ from "lodash"
 
-export const CANVAS_SIZE = 80;
+const CANVAS_SIZE = 80;
+
 const MARKER_RADIUS = (CANVAS_SIZE / 2) * 0.70; // Make room for the box shadow.
+
 const PROFILE_COLORS = {
   police: "#57D3F1",
   distress: "#F5A623",
@@ -10,60 +12,66 @@ const PROFILE_COLORS = {
   rescued: "#2ECC71",
 };
 
-let canvas = document.getElementById("profile-marker-drawing-board");
-let ctx = canvas.getContext("2d");
+export default class ProfileMarker {
+  constructor() {
+    this.canvas = document.getElementById("profile-marker-drawing-board");
+    this.ctx = this.canvas.getContext("2d");
+    this.cache = {};
 
-canvas.width = CANVAS_SIZE;
-canvas.height = CANVAS_SIZE;
+    this.canvas.width = CANVAS_SIZE;
+    this.canvas.height = CANVAS_SIZE;
+  }
 
-let cache = {};
+  // The demo won't have many profiles. This should suffice for now.
+  getProfileMarkerImage(user, profileImage) {
+    let color = this.getColorForProfileType(user);
+    let cacheKey = `${user.id}-${color}`;
 
-// The demo won't have many profiles. This should suffice for now.
-export function getProfileMarkerImage(user, profileImage) {
-  let color = getColorForProfileType(user);
-  let cacheKey = `${user.id}-${color}`;
+    if (this.cache[cacheKey]) {
+      return this.cache[cacheKey];
+    } else {
+      return this.cache[cacheKey] = this.makeProfileMarkerImage(user, profileImage);
+    }
+  }
 
-  if (cache[cacheKey]) {
-    return cache[cacheKey];
-  } else {
-    return cache[cacheKey] = makeProfileMarkerImage(user, profileImage);
+  makeProfileMarkerImage(user, profileImage) {
+    let image = new Image();
+    const center = CANVAS_SIZE / 2;
+
+    image.src = profileImage; // Base64 only.
+
+    this.ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+
+    this.ctx.save();
+    this.ctx.fillStyle = this.getColorForProfileType(user);
+
+    this.ctx.shadowBlur = 6;
+    this.ctx.shadowOffsetY = 3;
+    this.ctx.shadowColor = "dimgray";
+
+    this.ctx.beginPath();
+    this.ctx.arc(center, center, MARKER_RADIUS, 0, 2 * Math.PI);
+    this.ctx.fill();
+    this.ctx.closePath();
+
+    this.ctx.beginPath();
+    this.ctx.arc(center, center, Math.ceil(MARKER_RADIUS * 0.80), 0, 2 * Math.PI);
+    this.ctx.clip();
+
+    this.ctx.drawImage(image, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
+    this.ctx.restore();
+
+    return this.canvas.toDataURL();
+  }
+
+  getColorForProfileType(user) {
+    if (user.status) {
+      return PROFILE_COLORS[user.status];
+    } else {
+      return PROFILE_COLORS["police"];
+    }
   }
 }
 
-function makeProfileMarkerImage(user, profileImage) {
-  let image = new Image();
-  const center = CANVAS_SIZE / 2;
+ProfileMarker.MARKER_SIZE = CANVAS_SIZE;
 
-  image.src = profileImage; // Base64 only.
-
-  ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
-
-  ctx.save();
-  ctx.fillStyle = getColorForProfileType(user);
-
-  ctx.shadowBlur = 6;
-  ctx.shadowOffsetY = 3;
-  ctx.shadowColor = "dimgray";
-
-  ctx.beginPath();
-  ctx.arc(center, center, MARKER_RADIUS, 0, 2 * Math.PI);
-  ctx.fill();
-  ctx.closePath();
-
-  ctx.beginPath();
-  ctx.arc(center, center, Math.ceil(MARKER_RADIUS * 0.80), 0, 2 * Math.PI);
-  ctx.clip();
-
-  ctx.drawImage(image, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
-  ctx.restore();
-
-  return canvas.toDataURL();
-};
-
-export function getColorForProfileType(user) {
-  if (user.status) {
-    return PROFILE_COLORS[user.status];
-  } else {
-    return PROFILE_COLORS["police"];
-  }
-}
