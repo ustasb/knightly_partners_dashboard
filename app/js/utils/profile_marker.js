@@ -1,6 +1,6 @@
 import _ from "lodash"
 
-const CANVAS_SIZE = 80;
+const CANVAS_SIZE = 60;
 
 const MARKER_RADIUS = (CANVAS_SIZE / 2) * 0.70; // Make room for the box shadow.
 
