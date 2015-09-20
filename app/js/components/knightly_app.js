@@ -97,7 +97,7 @@ class KnightlyApp extends React.Component {
           <Modal.Title>User Info</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {user.id}
+          {user.avatar}
         </Modal.Body>
       </Modal>
     );

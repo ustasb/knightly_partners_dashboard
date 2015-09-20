@@ -1,4 +1,6 @@
 import _ from "lodash"
+import faker from "faker"
+
 import { newPos } from "./lat_lngs"
 
 export default class User {
@@ -6,6 +8,12 @@ export default class User {
     this.id = _.parseInt(_.uniqueId());
     this.pos = newPos();
     this.end = newPos();
+
+    // Info
+    this.name = faker.name.findName();
+    this.cell = faker.phone.phoneNumber();
+    this.school = "Northeastern University";
+    this.avatar = faker.image.avatar();
   }
 
   moveTo(newPos, speed = 0.00005) {
