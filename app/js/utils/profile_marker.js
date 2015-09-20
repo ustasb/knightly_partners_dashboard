@@ -1,6 +1,6 @@
 import _ from "lodash"
 
-const CANVAS_SIZE = 80;
+export const CANVAS_SIZE = 80;
 const MARKER_RADIUS = (CANVAS_SIZE / 2) * 0.70; // Make room for the box shadow.
 const PROFILE_COLORS = {
   police: "#57D3F1",
@@ -60,7 +60,7 @@ function makeProfileMarkerImage(user, profileImage) {
   return canvas.toDataURL();
 };
 
-function getColorForProfileType(user) {
+export function getColorForProfileType(user) {
   if (user.status) {
     return PROFILE_COLORS[user.status];
   } else {
