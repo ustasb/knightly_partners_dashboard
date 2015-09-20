@@ -1,6 +1,7 @@
 import _ from "lodash"
 import faker from "faker"
 import User from "./user"
+import { getStudentAvatar } from "../utils/profile_avatar"
 
 const BAD_STUDENT_STATUSES = ["panic", "distress"];
 
@@ -13,6 +14,7 @@ export default class Student extends User {
 
     // Info
     this.contacts = _.times(_.random(1, 3), this.genNewContact);
+    this.avatar = getStudentAvatar();
   }
 
   isOkay() {

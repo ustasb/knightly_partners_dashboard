@@ -2,7 +2,7 @@ import _  from "lodash"
 import alt from "../alt"
 import DeviceUserActions from "../actions/device_user_actions"
 
-const MAX_SAVED_STUDENTS_TO_STORE = 10;
+const MAX_SAVED_STUDENTS_TO_STORE = 5;
 
 class DeviceUserStore {
   constructor() {

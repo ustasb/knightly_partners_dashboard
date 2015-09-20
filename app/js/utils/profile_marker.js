@@ -1,6 +1,6 @@
 import _ from "lodash"
 
-const CANVAS_SIZE = 60;
+const CANVAS_SIZE = 66;
 
 const MARKER_RADIUS = (CANVAS_SIZE / 2) * 0.70; // Make room for the box shadow.
 
@@ -23,45 +23,50 @@ export default class ProfileMarker {
   }
 
   // The demo won't have many profiles. This should suffice for now.
-  getProfileMarkerImage(user, profileImage) {
+  getProfileMarkerImage(user, onDone) {
     let color = this.getColorForProfileType(user);
-    let cacheKey = `${user.id}-${color}`;
+    let cacheKey = `${user.avatar}-${color}`;
 
     if (this.cache[cacheKey]) {
-      return this.cache[cacheKey];
+      onDone(this.cache[cacheKey]);
     } else {
-      return this.cache[cacheKey] = this.makeProfileMarkerImage(user, profileImage);
+      this.makeProfileMarkerImage(user, (icon) => {
+        this.cache[cacheKey] = icon;
+        onDone(icon);
+      });
     }
   }
 
-  makeProfileMarkerImage(user, profileImage) {
+  makeProfileMarkerImage(user, onDone) {
     let image = new Image();
     const center = CANVAS_SIZE / 2;
 
-    image.src = profileImage; // Base64 only.
+    image.src = user.avatar;
 
-    this.ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+    image.onload = () => {
+      this.ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 
-    this.ctx.save();
-    this.ctx.fillStyle = this.getColorForProfileType(user);
+      this.ctx.save();
+      this.ctx.fillStyle = this.getColorForProfileType(user);
 
-    this.ctx.shadowBlur = 6;
-    this.ctx.shadowOffsetY = 4;
-    this.ctx.shadowColor = "#545454";
+      this.ctx.shadowBlur = 6;
+      this.ctx.shadowOffsetY = 4;
+      this.ctx.shadowColor = "#545454";
 
-    this.ctx.beginPath();
-    this.ctx.arc(center, center, MARKER_RADIUS, 0, 2 * Math.PI);
-    this.ctx.fill();
-    this.ctx.closePath();
+      this.ctx.beginPath();
+      this.ctx.arc(center, center, MARKER_RADIUS, 0, 2 * Math.PI);
+      this.ctx.fill();
+      this.ctx.closePath();
 
-    this.ctx.beginPath();
-    this.ctx.arc(center, center, Math.ceil(MARKER_RADIUS * 0.80), 0, 2 * Math.PI);
-    this.ctx.clip();
+      this.ctx.beginPath();
+      this.ctx.arc(center, center, Math.ceil(MARKER_RADIUS * 0.80), 0, 2 * Math.PI);
+      this.ctx.clip();
 
-    this.ctx.drawImage(image, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
-    this.ctx.restore();
+      this.ctx.drawImage(image, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
+      this.ctx.restore();
 
-    return this.canvas.toDataURL();
+      onDone(this.canvas.toDataURL());
+    }
   }
 
   getColorForProfileType(user) {

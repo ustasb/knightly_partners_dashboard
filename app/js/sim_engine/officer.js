@@ -1,10 +1,14 @@
 import User from "./user"
+import { getOfficerAvatar } from "../utils/profile_avatar"
 
 export default class Officer extends User {
   constructor() {
     super();
 
     this.targetStudent = null;
+
+    // info
+    this.avatar = getOfficerAvatar();
   }
 
   stopPursuing() {
