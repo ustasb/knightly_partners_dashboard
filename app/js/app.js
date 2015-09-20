@@ -3,14 +3,14 @@ require("../css/app.scss");
 import $ from "jquery"
 import React from "react"
 
-import KnightlyApp from "./components/knightly_app"
+import { initAppView } from "./components/knightly_app"
 import SimulationEngine from "./sim_engine/engine"
 import Map from "./map"
 import MapStyles from "./utils/map_styles"
 import DeviceUserActions from "./actions/device_user_actions"
 import DeviceUserStore from "./stores/device_user_store"
 
-React.render(<KnightlyApp />, document.getElementById("app"), initApp);
+initAppView(document.getElementById("app"), initApp);
 
 function initApp() {
   let map = mapInit();

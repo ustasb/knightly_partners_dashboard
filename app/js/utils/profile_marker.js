@@ -46,8 +46,8 @@ export default class ProfileMarker {
     this.ctx.fillStyle = this.getColorForProfileType(user);
 
     this.ctx.shadowBlur = 6;
-    this.ctx.shadowOffsetY = 3;
-    this.ctx.shadowColor = "dimgray";
+    this.ctx.shadowOffsetY = 4;
+    this.ctx.shadowColor = "#545454";
 
     this.ctx.beginPath();
     this.ctx.arc(center, center, MARKER_RADIUS, 0, 2 * Math.PI);
