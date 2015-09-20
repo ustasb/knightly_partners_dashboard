@@ -2,9 +2,14 @@ import $ from "jquery"
 import React from "react"
 import Router from "react-router"
 
+import { Modal } from 'react-bootstrap';
+
 import Feed from "./feed"
 import Incidents from "./incidents"
 import Stats from "./stats"
+
+import DeviceUserStore from "../stores/device_user_store"
+import DeviceUserActions from "../actions/device_user_actions"
 
 let DefaultRoute = Router.DefaultRoute;
 let Link = Router.Link;
@@ -29,9 +34,22 @@ class KnightlyApp extends React.Component {
     firstTimeInitCb && firstTimeInitCb();
   }
 
+  update() {
+    this.forceUpdate();
+  }
+
+  componentWillMount() {
+    DeviceUserStore.listen(this.update.bind(this));
+  }
+
+  componentWillUnmount() {
+    DeviceUserStore.unlisten(this.update.bind(this));
+  }
+
   render() {
     return (
       <div id="knightly-app" className="container-fluid">
+        {this.renderUserInfoModal()}
 
         <div id="top-bar-container" className="row">
           <div className="col-xs-9 left-part">
@@ -64,6 +82,29 @@ class KnightlyApp extends React.Component {
         <canvas id="profile-marker-drawing-board"></canvas>
       </div>
     );
+  }
+
+// Render Helpers
+
+  renderUserInfoModal() {
+    let user = DeviceUserStore.getShowMoreInfoUser();
+
+    if (!user) { return null; }
+
+    return (
+      <Modal show={true} onHide={this.hideMoreInfo} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>User Info</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {user.id}
+        </Modal.Body>
+      </Modal>
+    );
+  }
+
+  hideMoreInfo() {
+    DeviceUserActions.showMoreInfoFor(null);
   }
 }
 

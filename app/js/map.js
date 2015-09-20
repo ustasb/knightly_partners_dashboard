@@ -10,6 +10,7 @@ export default class Map {
     this.markerCreator = new ProfileMarker();
     this.markers = {};
     this.pursuingLines = [];
+    this.onMarkerClick = opts.onMarkerClick;
   }
 
   render() {
@@ -46,6 +47,10 @@ export default class Map {
       if (user.constructor.name === "Officer") {
         marker.setZIndex(1000 + user.id);
       }
+
+      marker.addListener('click', () => {
+        this.onMarkerClick(user.id);
+      });
     }
 
     let icon = this.markerCreator.getProfileMarkerImage(user, imageData)

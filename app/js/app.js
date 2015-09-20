@@ -57,6 +57,7 @@ function mapInit() {
     disableDefaultUI: true,
     zoomControl: true,
     scaleControl: true,
+    onMarkerClick: DeviceUserActions.showMoreInfoFor
   });
 }
 

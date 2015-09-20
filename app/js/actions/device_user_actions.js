@@ -36,6 +36,10 @@ class DeviceUserActions {
   updatePos(user) {
     this.dispatch(user);
   }
+
+  showMoreInfoFor(userId) {
+    this.dispatch(userId);
+  }
 }
 
 export default alt.createActions(DeviceUserActions);

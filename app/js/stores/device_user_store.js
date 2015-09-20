@@ -8,17 +8,21 @@ class DeviceUserStore {
   constructor() {
     this.officers = {};
     this.students = {};
+    this.showMoreInfoUserId = null;
 
     this.bindListeners({
       handleNewOfficer: DeviceUserActions.NEW_OFFICER,
       handleNewStudent: DeviceUserActions.NEW_STUDENT,
       handleUpdatePos: DeviceUserActions.UPDATE_POS,
       handleStudentIsOkay: [DeviceUserActions.STUDENT_IS_OKAY, DeviceUserActions.OFFICER_RESCUE],
+      handleShowMoreInfo: DeviceUserActions.SHOW_MORE_INFO_FOR,
     });
 
     this.exportPublicMethods({
       getOfficers: this.getOfficers,
       getStudents: this.getStudents,
+      getShowMoreInfoUser: this.getShowMoreInfoUser,
+      getUserForId: this.getUserForId,
     });
   }
 
@@ -38,6 +42,10 @@ class DeviceUserStore {
     this.pruneOkayStudents();
   }
 
+  handleShowMoreInfo(userId) {
+    this.showMoreInfoUserId = userId;
+  }
+
 // Public Methods
 
   getOfficers() {
@@ -46,6 +54,15 @@ class DeviceUserStore {
 
   getStudents() {
     return this.getState().students;
+  }
+
+  getShowMoreInfoUser() {
+    return this.getUserForId(this.getState().showMoreInfoUserId);
+  }
+
+  getUserForId(userId) {
+    return _.find(this.getStudents(), { id: userId }) ||
+           _.find(this.getOfficers(), { id: userId });
   }
 
 // Helper Methods
