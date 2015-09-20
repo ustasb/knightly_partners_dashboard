@@ -14,7 +14,7 @@ const EVENTS = {
 
 export default class SimulationEngine {
   constructor(eventCbs = {}) {
-    this.maxStudents = 1;
+    this.maxStudents = 2;
     this.maxOfficers = 2;
     this.updateDelayMs = 1000;
 
