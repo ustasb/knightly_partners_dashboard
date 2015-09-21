@@ -13,7 +13,7 @@ export default class Student extends User {
     this.previousPositions = [];
 
     // Info
-    this.contacts = _.times(_.random(1, 3), this.genNewContact);
+    this.contact = this.genNewContact();
     this.avatar = getStudentAvatar();
   }
 

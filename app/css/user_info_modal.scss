@@ -1,0 +1,50 @@
+@import "brand_colors";
+
+.user-info-modal {
+  .modal-content {
+    border-radius: 0;
+  }
+
+  .modal-dialog {
+    margin-top: 150px;
+    width: 400px;
+  }
+
+  .modal-header {
+    background-color: $brand-primary-color;
+  }
+
+  .modal-title {
+    text-transform: uppercase;
+    color: $brand-menu-white;
+    font-weight: 300;
+  }
+
+  .close {
+    color: $brand-menu-white;
+    margin-top: 2px;
+  }
+
+  .avatar {
+    float: left;
+    border-radius: 500px; // some big number
+    max-width: 120px;
+  }
+
+  .user-info {
+    display: inline-block;
+    margin-left: 30px;
+  }
+
+  .user-type {
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .emergency-contact {
+    margin: 5px 0;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}

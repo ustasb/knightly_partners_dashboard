@@ -91,13 +91,29 @@ class KnightlyApp extends React.Component {
 
     if (!user) { return null; }
 
+    if (user.contact) {
+      var emergencyContact = <div>
+        <div className="emergency-contact">Emergency Contact</div>
+        <div>{user.contact.name}</div>
+        <div>{user.contact.cell}</div>
+      </div>
+    }
+
     return (
-      <Modal show={true} onHide={this.hideMoreInfo} animation={false}>
+      <Modal show={true} className="user-info-modal" onHide={this.hideMoreInfo} animation={false}>
         <Modal.Header closeButton>
           <Modal.Title>User Info</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {user.avatar}
+          <img className="avatar" src={user.avatar} />
+          <div className="user-info">
+            <div className="user-type">{user.constructor.name}</div>
+            <div>{user.name}</div>
+            <div>{user.cell}</div>
+            <div>{user.school}</div>
+            {emergencyContact}
+          </div>
+          <div className="clearfix"></div>
         </Modal.Body>
       </Modal>
     );
