@@ -1,35 +1,36 @@
 import alt from "../alt"
 
-function log(msg) {
-  console.log(msg);
-}
-
 class DeviceUserActions {
   newOfficer(officer) {
-    log(`officer ${officer.id} is on duty`);
     this.dispatch(officer);
   }
 
   officerInPursuit(officer, student) {
-    log(`officer ${officer.id} is pursuing student ${student.id}`);
+    this.dispatch({
+      officer: officer,
+      student: student,
+    });
   }
 
   officerOffPursuit(officer, student) {
-    log(`officer ${officer.id} is no longer pursuing student ${student.id}`);
+    this.dispatch({
+      officer: officer,
+      student: student,
+    });
   }
 
   officerRescue(officer, student) {
-    log(`officer ${officer.id} rescued student ${student.id}`);
-    this.dispatch(student);
+    this.dispatch({
+      officer: officer,
+      student: student,
+    });
   }
 
   newStudent(student) {
-    log(`student ${student.id} has status: ${student.status}`);
     this.dispatch(student);
   }
 
   studentIsOkay(student) {
-    log(`student ${student.id} is now okay`);
     this.dispatch(student);
   }
 
