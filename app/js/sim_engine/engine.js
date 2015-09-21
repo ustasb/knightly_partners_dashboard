@@ -16,7 +16,7 @@ export default class SimulationEngine {
   constructor(eventCbs = {}) {
     this.maxStudents = 2;
     this.maxOfficers = 2;
-    this.updateDelayMs = 1000;
+    this.updateDelayMs = SimulationEngine.DEFAULT_SPEED
 
     this.eventCbs = _.merge(_.clone(EVENTS), eventCbs);
 
@@ -103,3 +103,5 @@ export default class SimulationEngine {
 
 // Northeastern University
 SimulationEngine.CENTER_POS = { lat: 42.340350, lng: -71.089601 };
+
+SimulationEngine.DEFAULT_SPEED = 1000;

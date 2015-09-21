@@ -62,7 +62,6 @@ function mapInit() {
 }
 
 function initDemoControls(engine) {
-  let prevUpdateDelay = null;
   let fired = false;
 
   const SPACE_KEY = 32;
@@ -73,7 +72,6 @@ function initDemoControls(engine) {
 
     switch(e.keyCode) {
       case SPACE_KEY:
-        prevUpdateDelay = engine.updateDelayMs;
         engine.updateDelayMs = 30;
         break;
       case S_KEY:
@@ -89,7 +87,7 @@ function initDemoControls(engine) {
   }).keyup((e) => {
     switch(e.keyCode) {
       case SPACE_KEY:
-        engine.updateDelayMs = prevUpdateDelay;
+        engine.updateDelayMs = SimulationEngine.DEFAULT_SPEED;
         break;
     }
 
