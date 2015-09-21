@@ -15,6 +15,7 @@ let DefaultRoute = Router.DefaultRoute;
 let Link = Router.Link;
 let Route = Router.Route;
 let RouteHandler = Router.RouteHandler;
+let Redirect = Router.Redirect;
 let firstTimeInitCb = null;
 
 class KnightlyApp extends React.Component {
@@ -129,7 +130,7 @@ let routes = (
     <Route name="feed" handler={Feed} />
     <Route name="incidents" handler={Incidents} />
     <Route name="stats" handler={Stats} />
-    <DefaultRoute handler={Feed} />
+    <Redirect from="/" to="feed"/>
   </Route>
 );
 
