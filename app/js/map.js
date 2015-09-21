@@ -7,8 +7,10 @@ export default class Map {
     this.map = new google.maps.Map(document.getElementById(domId), opts);
     this.markerCreator = new ProfileMarker();
     this.markers = {};
+    this.trailMarkers = {};
     this.pursuingLines = [];
     this.onMarkerClick = opts.onMarkerClick;
+    this.previousTrailMarkers = [];
   }
 
   render() {
@@ -19,6 +21,7 @@ export default class Map {
 
     _.each(students, (student) => {
       this.createOrMoveMarker(student)
+      this.renderTrail(student);
     });
 
     _.each(officers, (officer) => {
@@ -46,7 +49,7 @@ export default class Map {
         marker.setZIndex(1000 + user.id);
       }
 
-      marker.addListener('click', () => {
+      marker.addListener('click', (e) => {
         this.onMarkerClick(user.id);
       });
     }
@@ -71,6 +74,12 @@ export default class Map {
     _.each(staleMarkersKeys, (key) => {
       this.markers[key].setMap(null);
       delete this.markers[key];
+
+      let trailMarkers = this.trailMarkers[key];
+      if (trailMarkers) {
+        _.each(trailMarkers, (marker) => { marker.setMap(null); });
+        delete this.trailMarkers[key];
+      }
     });
   }
 
@@ -101,5 +110,30 @@ export default class Map {
       this.pursuingLines.push(outterLine);
       this.pursuingLines.push(innerLine);
     });
+  }
+
+  renderTrail(student) {
+    let len = student.previousPositions.length;
+
+    if (len % 5 === 0) {
+      let pos = student.previousPositions[len - 1];
+      let color = this.markerCreator.getColorForProfileType(student);
+
+      let marker = new google.maps.Circle({
+        map: this.map,
+        center: pos,
+        radius: 5,
+        strokeOpacity: 0.8,
+        strokeWeight: 1.5,
+        fillColor: color,
+        fillOpacity: 1,
+      });
+
+      if (!this.trailMarkers[student.id]) {
+        this.trailMarkers[student.id] = [];
+      }
+
+      this.trailMarkers[student.id].push(marker);
+    }
   }
 }
