@@ -11,7 +11,7 @@ export default class User {
 
     // Info
     this.name = faker.name.findName();
-    this.cell = faker.phone.phoneNumber();
+    this.cell = faker.phone.phoneNumberFormat();
     this.school = "Northeastern University";
     this.avatar = faker.image.avatar();
   }
