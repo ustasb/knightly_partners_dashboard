@@ -22,7 +22,7 @@ export default class Officer extends User {
       var end = this.end;
     }
 
-    const dist = this.moveTo(end, 0.00005);
+    const dist = this.moveTo(end, 0.000075);
 
     if (dist <= 0.0002) {
       if (this.targetStudent) {

@@ -27,32 +27,32 @@ class FeedStore {
 
   handleNewOfficer(officer) {
     let log = `${officer.name} is on duty.`;
-    this.addNewEvent(log);
+    this.addNewEvent(log, officer.avatar, "officer");
   }
 
   handleNewStudent(student) {
     let log = `${student.name} is in ${student.status}!`;
-    this.addNewEvent(log);
+    this.addNewEvent(log, student.avatar, student.status);
   }
 
   handleOfficerInPursuit(data) {
     let log = `Officer ${data.officer.name} is pursuing ${data.student.name}.`;
-    this.addNewEvent(log);
+    this.addNewEvent(log, data.officer.avatar, data.student.status);
   }
 
   handleOfficerOffPursuit(data) {
     let log = `Officer ${data.officer.name} is no longer pursuing ${data.student.name}.`;
-    this.addNewEvent(log);
+    this.addNewEvent(log, data.officer.avatar, "officer");
   }
 
   handleOfficerRescue(data) {
     let log = `Officer ${data.officer.name} rescued ${data.student.name}!`;
-    this.addNewEvent(log);
+    this.addNewEvent(log, data.officer.avatar, "okay");
   }
 
   handleStudentIsOkay(student) {
     let log = `${student.name} is now okay!`;
-    this.addNewEvent(log);
+    this.addNewEvent(log, student.avatar, "okay");
   }
 
 // Public Methods
@@ -63,17 +63,19 @@ class FeedStore {
 
 // Helper Methods
 
-  addNewEvent(log) {
+  addNewEvent(log, avatar, type="") {
     var event = {
       id: this.eventIdCounter++,
       log: log,
       time: _.now(),
+      avatar: avatar,
+      type: type,
     };
 
-    this.feedItems.push(event);
+    this.feedItems.unshift(event);
 
     if (this.feedItems.length > 50) {
-      this.feedItems.shift();
+      this.feedItems.pop();
     }
   }
 }
