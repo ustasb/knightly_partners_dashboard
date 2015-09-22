@@ -2,9 +2,16 @@ import _ from "lodash"
 import DeviceUserStore from "./stores/device_user_store"
 import ProfileMarker from "./utils/profile_marker"
 
+// A hack, I know... Trying to bang this out.
+let currentMap = null;
+
 export default class Map {
+  static getCurrentMap() {
+    return currentMap;
+  }
+
   constructor(domId, opts) {
-    this.map = new google.maps.Map(document.getElementById(domId), opts);
+    currentMap = this.map = new google.maps.Map(document.getElementById(domId), opts);
     this.markerCreator = new ProfileMarker();
     this.markers = {};
     this.trailMarkers = {};

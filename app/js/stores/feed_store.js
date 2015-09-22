@@ -27,32 +27,32 @@ class FeedStore {
 
   handleNewOfficer(officer) {
     let log = `${officer.name} is on duty.`;
-    this.addNewEvent(log, officer.avatar, "officer");
+    this.addNewEvent(log, officer.pos, officer.avatar, "officer");
   }
 
   handleNewStudent(student) {
     let log = `${student.name} is in ${student.status}!`;
-    this.addNewEvent(log, student.avatar, student.status);
+    this.addNewEvent(log, student.pos, student.avatar, student.status);
   }
 
   handleOfficerInPursuit(data) {
     let log = `Officer ${data.officer.name} is pursuing ${data.student.name}.`;
-    this.addNewEvent(log, data.officer.avatar, data.student.status);
+    this.addNewEvent(log, data.officer.pos, data.officer.avatar, data.student.status);
   }
 
   handleOfficerOffPursuit(data) {
     let log = `Officer ${data.officer.name} is no longer pursuing ${data.student.name}.`;
-    this.addNewEvent(log, data.officer.avatar, "officer");
+    this.addNewEvent(log, data.officer.pos, data.officer.avatar, "officer");
   }
 
   handleOfficerRescue(data) {
     let log = `Officer ${data.officer.name} rescued ${data.student.name}!`;
-    this.addNewEvent(log, data.officer.avatar, "okay");
+    this.addNewEvent(log, data.officer.pos, data.officer.avatar, "okay");
   }
 
   handleStudentIsOkay(student) {
     let log = `${student.name} is now okay!`;
-    this.addNewEvent(log, student.avatar, "okay");
+    this.addNewEvent(log, student.pos, student.avatar, "okay");
   }
 
 // Public Methods
@@ -63,13 +63,14 @@ class FeedStore {
 
 // Helper Methods
 
-  addNewEvent(log, avatar, type="") {
+  addNewEvent(log, pos, avatar, type="") {
     var event = {
       id: this.eventIdCounter++,
       log: log,
       time: _.now(),
       avatar: avatar,
       type: type,
+      pos: pos,
     };
 
     this.feedItems.unshift(event);
