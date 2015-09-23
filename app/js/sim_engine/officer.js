@@ -8,6 +8,8 @@ export default class Officer extends User {
     this.targetStudent = null;
 
     // info
+    this.type = "officer";
+
     let avatar = getOfficerAvatar();
     this.avatar = avatar.image;
 

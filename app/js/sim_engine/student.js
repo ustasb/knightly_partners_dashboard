@@ -15,6 +15,7 @@ export default class Student extends User {
     this.previousPositions = [];
 
     // Info
+    this.type = "student";
     this.contact = this.genNewContact();
 
     let avatar = getStudentAvatar();

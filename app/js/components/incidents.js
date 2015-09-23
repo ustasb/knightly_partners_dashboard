@@ -75,7 +75,7 @@ export default class Incidents extends React.Component {
 
     return (
       <div>
-        <h3>Okay</h3>
+        <h3>Resolved</h3>
         {this.renderFeedItems(okay)}
       </div>
     );

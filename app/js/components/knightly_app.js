@@ -114,7 +114,7 @@ class KnightlyApp extends React.Component {
         <Modal.Body>
           <img className="avatar" src={user.avatar} />
           <div className="user-info">
-            <div className="user-type">{user.constructor.name}</div>
+            <div className="user-type">{user.type}</div>
             <div>{user.name}</div>
             <div>{user.cell}</div>
             <div>{user.school}</div>
