@@ -1,7 +1,9 @@
 import _ from "lodash"
-import faker from "faker"
+import Chance from "chance"
 import User from "./user"
 import { getStudentAvatar } from "../utils/profile_avatar"
+
+let chance = new Chance();
 
 const BAD_STUDENT_STATUSES = ["panic", "distress"];
 
@@ -14,7 +16,11 @@ export default class Student extends User {
 
     // Info
     this.contact = this.genNewContact();
-    this.avatar = getStudentAvatar();
+
+    let avatar = getStudentAvatar();
+    this.avatar = avatar.image;
+
+    this.name = chance.name({ gender: avatar.gender });
   }
 
   isOkay() {
@@ -41,8 +47,8 @@ export default class Student extends User {
 
   genNewContact() {
     return {
-      name: faker.name.findName(),
-      cell: faker.phone.phoneNumber(),
+      name: chance.name(),
+      cell: chance.phone(),
     };
   }
 }

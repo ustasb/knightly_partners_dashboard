@@ -8,7 +8,10 @@ export default class Officer extends User {
     this.targetStudent = null;
 
     // info
-    this.avatar = getOfficerAvatar();
+    let avatar = getOfficerAvatar();
+    this.avatar = avatar.image;
+
+    this.name = chance.name({ gender: avatar.gender });
   }
 
   stopPursuing() {

@@ -1,21 +1,21 @@
 import _ from "lodash"
 
 var students = [
-  require("../../images/avatars/student_1.png"),
-  require("../../images/avatars/student_2.png"),
-  require("../../images/avatars/student_3.png"),
-  require("../../images/avatars/student_4.png"),
-  require("../../images/avatars/student_5.png"),
-  require("../../images/avatars/student_6.png"),
-  require("../../images/avatars/student_7.png"),
-  require("../../images/avatars/student_8.png"),
-  require("../../images/avatars/student_9.png"),
-  require("../../images/avatars/student_10.png"),
+  { image: require("../../images/avatars/student_1.png"), gender: "female" },
+  { image: require("../../images/avatars/student_2.png"), gender: "female" },
+  { image: require("../../images/avatars/student_3.png"), gender: "female" },
+  { image: require("../../images/avatars/student_4.png"), gender: "female" },
+  { image: require("../../images/avatars/student_5.png"), gender: "male" },
+  { image: require("../../images/avatars/student_6.png"), gender: "male" },
+  { image: require("../../images/avatars/student_7.png"), gender: "male" },
+  { image: require("../../images/avatars/student_8.png"), gender: "female" },
+  { image: require("../../images/avatars/student_9.png"), gender: "female" },
+  { image: require("../../images/avatars/student_10.png"), gender: "female" },
 ];
 
 var officers = [
-  require("../../images/avatars/officer_1.png"),
-  require("../../images/avatars/officer_2.png"),
+  { image: require("../../images/avatars/officer_1.png"), gender: "male" },
+  { image: require("../../images/avatars/officer_2.png"), gender: "female" },
 ];
 
 let officerCounter = 0;

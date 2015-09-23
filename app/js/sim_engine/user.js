@@ -1,5 +1,7 @@
 import _ from "lodash"
-import faker from "faker"
+import Chance from "chance"
+
+let chance = new Chance();
 
 import { newPos } from "./lat_lngs"
 
@@ -10,10 +12,8 @@ export default class User {
     this.end = newPos();
 
     // Info
-    this.name = faker.name.findName();
-    this.cell = faker.phone.phoneNumberFormat();
+    this.cell = chance.phone();
     this.school = "Northeastern University";
-    this.avatar = faker.image.avatar();
   }
 
   moveTo(newPos, speed = 0.00005) {
