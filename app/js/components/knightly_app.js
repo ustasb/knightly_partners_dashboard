@@ -70,6 +70,16 @@ class KnightlyApp extends React.Component {
               <div className="glyphicon glyphicon-time"></div>
             </Link>
           </div>
+          <div className="col-xs-3 right-part">
+            <img className="avatar" src={require("../../images/avatars/signed_in_officer.png")} />
+            <span className="welcome">
+              Welcome,
+              <span className="name"> Nancy</span>
+            </span>
+            <a className="header-button" href="http://www.northeastern.edu/nupd/">
+              <div className="glyphicon glyphicon-log-out"></div>
+            </a>
+          </div>
         </div>
 
         <div id="bottom-bar-container" className="row">
