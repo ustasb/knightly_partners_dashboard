@@ -1,0 +1,15 @@
+@import "brand_colors";
+@import "feed_item";
+
+#incidents-menu {
+  height: 100%;
+  overflow: auto;
+
+  .all-safe {
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    width: 250px;
+  }
+}

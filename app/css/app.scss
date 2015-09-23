@@ -88,6 +88,14 @@ h3 {
   @include map-box-shadow;
   height: 100%;
   background-color: $brand-menu-white;
+
+  h3 {
+    text-align: center;
+    border-bottom: 1px solid #DEDFE3;
+    padding: 15px 0;
+    margin: 0;
+    font-size: 1.1em;
+  }
 }
 
 // Get this out of sight.

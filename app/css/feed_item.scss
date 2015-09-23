@@ -1,0 +1,57 @@
+@import "brand_colors";
+
+.feed-items {
+  height: calc(100% - 48px);
+  overflow: auto;
+}
+
+.feed-item {
+  position: relative;
+  display: table;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #F8FAFB;
+  border-bottom: 1px solid #DEDFE3;
+  cursor: pointer;
+
+  .avatar {
+    float: left;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 500px;
+  }
+
+  .log {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+  }
+
+  .time-ago {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 0.8em;
+  }
+
+  @mixin horiz-border($color) {
+    border-left: 6px solid $color;
+    border-right: 6px solid $color;
+  }
+
+  &.okay, &.rescued {
+    @include horiz-border($okay-green);
+  }
+
+  &.panic {
+    @include horiz-border($panic-red);
+  }
+
+  &.distress {
+    @include horiz-border($distress-orange);
+  }
+
+  &.officer {
+    @include horiz-border($brand-accent-color);
+  }
+}

@@ -23,6 +23,9 @@ class DeviceUserStore {
       getStudents: this.getStudents,
       getShowMoreInfoUser: this.getShowMoreInfoUser,
       getUserForId: this.getUserForId,
+      getPanickedStudents: this.getPanickedStudents,
+      getDistressedStudents: this.getDistressedStudents,
+      getOkayStudents: this.getOkayStudents,
     });
   }
 
@@ -63,6 +66,24 @@ class DeviceUserStore {
   getUserForId(userId) {
     return _.find(this.getStudents(), { id: userId }) ||
            _.find(this.getOfficers(), { id: userId });
+  }
+
+  getPanickedStudents() {
+    return _.filter(this.getStudents(), (student) => {
+      return student.status === "panic";
+    });
+  }
+
+  getDistressedStudents() {
+    return _.filter(this.getStudents(), (student) => {
+      return student.status === "distress";
+    });
+  }
+
+  getOkayStudents() {
+    return _.filter(this.getStudents(), (student) => {
+      return /(okay|rescued)/.test(student.status);
+    });
   }
 
 // Helper Methods
