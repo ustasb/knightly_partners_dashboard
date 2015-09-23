@@ -2,6 +2,7 @@ require("../css/app.scss");
 
 import $ from "jquery"
 import React from "react"
+import bowser from "bowser"
 
 import { initAppView } from "./components/knightly_app"
 import SimulationEngine from "./sim_engine/engine"
@@ -10,7 +11,11 @@ import MapStyles from "./utils/map_styles"
 import DeviceUserActions from "./actions/device_user_actions"
 import DeviceUserStore from "./stores/device_user_store"
 
-initAppView(document.getElementById("app"), initApp);
+if (!bowser.mobile && (bowser.chrome || bowser.firefox || bowser.safari)) {
+  initAppView(document.getElementById("app"), initApp);
+} else {
+  $("body").text("This is an experimental demo. Only desktop versions of Chrome, Safari and Firefox are supported.");
+}
 
 function initApp() {
   let map = mapInit();
