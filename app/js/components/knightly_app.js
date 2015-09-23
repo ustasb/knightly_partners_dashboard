@@ -6,7 +6,6 @@ import { Modal } from 'react-bootstrap';
 
 import Feed from "./feed"
 import Incidents from "./incidents"
-import Stats from "./stats"
 
 import DeviceUserStore from "../stores/device_user_store"
 import DeviceUserActions from "../actions/device_user_actions"
@@ -60,9 +59,6 @@ class KnightlyApp extends React.Component {
 
             <div className="brand-name">Knightly</div>
 
-            <Link className="header-button" to="stats">
-              <div className="glyphicon glyphicon glyphicon-stats"></div>
-            </Link>
             <Link className="header-button" to="incidents">
               <div className="glyphicon glyphicon-exclamation-sign"></div>
             </Link>
@@ -139,7 +135,6 @@ let routes = (
   <Route name="app" path="/" handler={KnightlyApp}>
     <Route name="feed" handler={Feed} />
     <Route name="incidents" handler={Incidents} />
-    <Route name="stats" handler={Stats} />
     <Redirect from="/" to="feed"/>
   </Route>
 );
