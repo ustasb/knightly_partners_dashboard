@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "webpack-dev-server --inline --hot",
-    "deploy": "NODE_ENV=production webpack -p --config webpack.production.config.js"
+    "prod": "NODE_ENV=production webpack -p --config webpack.production.config.js"
   },
   "author": "Brian Ustas",
   "devDependencies": {
