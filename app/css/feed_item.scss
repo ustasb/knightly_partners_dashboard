@@ -47,8 +47,8 @@
     @include horiz-border($panic-red);
   }
 
-  &.distress {
-    @include horiz-border($distress-orange);
+  &.uncomfortable {
+    @include horiz-border($uncomfortable-orange);
   }
 
   &.officer {

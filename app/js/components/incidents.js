@@ -20,17 +20,17 @@ export default class Incidents extends React.Component {
 
   render() {
     let panicked = this.renderInPanic();
-    let distressed = this.renderInDistress();
+    let uncomfortable = this.renderUncomfortable();
     let okay = this.renderIsOkay();
 
-    if (!panicked && !distressed && !okay) {
+    if (!panicked && !uncomfortable && !okay) {
       okay = <div className="all-safe">There are no incidents right now. Everyone's safe!</div>;
     }
 
     return (
       <div id="incidents-menu" className="row">
         {panicked}
-        {distressed}
+        {uncomfortable}
         {okay}
       </div>
     );
@@ -51,17 +51,17 @@ export default class Incidents extends React.Component {
     );
   }
 
-  renderInDistress() {
-    let distressed = DeviceUserStore.getDistressedStudents();
+  renderUncomfortable() {
+    let uncomfortable = DeviceUserStore.getUncomfortableStudents();
 
-    if (distressed.length === 0) {
+    if (uncomfortable.length === 0) {
       return null;
     }
 
     return (
       <div>
-        <h3>In Distress</h3>
-        {this.renderFeedItems(distressed)}
+        <h3>Uncomfortable</h3>
+        {this.renderFeedItems(uncomfortable)}
       </div>
     );
   }

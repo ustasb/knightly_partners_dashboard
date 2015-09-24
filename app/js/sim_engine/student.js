@@ -5,7 +5,7 @@ import { getStudentAvatar } from "../utils/profile_avatar"
 
 let chance = new Chance();
 
-const BAD_STUDENT_STATUSES = ["panic", "distress"];
+const BAD_STUDENT_STATUSES = ["panic", "uncomfortable"];
 
 export default class Student extends User {
   constructor() {

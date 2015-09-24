@@ -31,7 +31,12 @@ class FeedStore {
   }
 
   handleNewStudent(student) {
-    let log = `${student.name} is in ${student.status}!`;
+    if (student.status === "panic") {
+      var log = `${student.name} is in ${student.status}!`;
+    } else {
+      var log = `${student.name} is ${student.status}!`;
+    }
+
     this.addNewEvent(log, student.pos, student.avatar, student.status);
   }
 

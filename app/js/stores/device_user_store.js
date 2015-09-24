@@ -24,7 +24,7 @@ class DeviceUserStore {
       getShowMoreInfoUser: this.getShowMoreInfoUser,
       getUserForId: this.getUserForId,
       getPanickedStudents: this.getPanickedStudents,
-      getDistressedStudents: this.getDistressedStudents,
+      getUncomfortableStudents: this.getUncomfortableStudents,
       getOkayStudents: this.getOkayStudents,
     });
   }
@@ -74,9 +74,9 @@ class DeviceUserStore {
     });
   }
 
-  getDistressedStudents() {
+  getUncomfortableStudents() {
     return _.filter(this.getStudents(), (student) => {
-      return student.status === "distress";
+      return student.status === "uncomfortable";
     });
   }
 

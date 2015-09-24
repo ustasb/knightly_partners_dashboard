@@ -6,7 +6,7 @@ rushed and needs to be refactored.
 ## What is it?
 
 A dashboard intended for a campus police dispatcher that shows students in
-distress or panic, and the officers that are patrolling and/or responding to
+panic or uncomfortable, and the officers that are patrolling and/or responding to
 incidents.
 
 It is just a prototype but demonstrates the key value driver. All the data is
@@ -31,7 +31,7 @@ isn't great.
   - Live Feed Menu
     - Shows the latest event data.
   - Incidents Menu
-    - Shows the currently panicked and distress students.
+    - Shows the currently panicked and uncomfortable students.
     - Shows the last 5 resolved student incidents.
   - Clicking on any side menu feed item will focus the map appropriately.
 

@@ -6,7 +6,7 @@ const MARKER_RADIUS = (CANVAS_SIZE / 2) * 0.70; // Make room for the box shadow.
 
 const PROFILE_COLORS = {
   police: "#57D3F1",
-  distress: "#F5A623",
+  uncomfortable: "#F5A623",
   panic: "#D0021B",
   okay: "#2ECC71",
   rescued: "#2ECC71",
