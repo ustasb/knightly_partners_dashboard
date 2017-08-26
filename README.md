@@ -3,6 +3,8 @@
 This is just a prototype and I created it over a weekend. The code is very
 rushed and needs to be refactored.
 
+Initial release: 09/23/15
+
 ## What is it?
 
 A dashboard intended for a campus police dispatcher that shows students in
@@ -55,3 +57,13 @@ For development:
 For a production build:
 
     npm run prod
+
+## Usage with Docker
+
+First, build the Docker image:
+
+    docker build -t knightly_partners_dashboard .
+
+To build the production output (`public/`):
+
+    ./build_public.sh
