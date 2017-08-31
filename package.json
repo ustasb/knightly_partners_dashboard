@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "./node_modules/.bin/webpack-dev-server --inline --hot",
-    "prod": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack.production.config.js && cp src/index.html public/"
+    "prod": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack.production.config.js && cp -r src/favicons src/index.html public/"
   },
   "author": "Brian Ustas",
   "devDependencies": {
