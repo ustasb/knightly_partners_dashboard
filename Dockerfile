@@ -12,7 +12,7 @@ WORKDIR $APP_PATH
 
 COPY package.json $APP_PATH
 COPY package-lock.json $APP_PATH
-RUN npm install && npm install -g webpack@1.15.0
+RUN npm install
 
 COPY . $APP_PATH
 

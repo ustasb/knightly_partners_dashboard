@@ -2,8 +2,8 @@
   "name": "knightly",
   "version": "0.0.1",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot",
-    "prod": "NODE_ENV=production webpack -p --config webpack.production.config.js && cp src/index.html public/"
+    "dev": "./node_modules/.bin/webpack-dev-server --inline --hot",
+    "prod": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack.production.config.js && cp src/index.html public/"
   },
   "author": "Brian Ustas",
   "devDependencies": {
@@ -17,7 +17,8 @@
     "sass-loader": "^2.0.1",
     "style-loader": "^0.12.3",
     "url-loader": "^0.5.6",
-    "webpack": "^1.12.1"
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
     "alt": "^0.17.3",

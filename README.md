@@ -47,7 +47,6 @@ use mockups to represent other potential features.
 
 First:
 
-    npm install -g webpack webpack-dev-server
     npm install
 
 For development:
