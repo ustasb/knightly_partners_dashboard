@@ -15,8 +15,7 @@ COPY package-lock.json $APP_PATH
 RUN npm install
 
 COPY . $APP_PATH
+VOLUME $APP_PATH
 
 # Build public/ assets.
-RUN npm run prod
-
-VOLUME $APP_PATH
+CMD ["npm", "run", "prod"]

@@ -53,7 +53,11 @@ For development:
 
     npm run dev
 
-For a production build:
+For production, first define:
+
+    export KNIGHTLY_GMAPS_API_KEY=<fill-in>
+
+To build the production output (`public/`):
 
     npm run prod
 
@@ -65,4 +69,4 @@ First, build the Docker image:
 
 To build the production output (`public/`):
 
-    ./build_public.sh
+    ./docker_build_public.sh
