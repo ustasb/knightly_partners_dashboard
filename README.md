@@ -1,9 +1,11 @@
 # Knightly Partners Dashboard
 
+- [brianustas.com/campus-safety-dashboard](http://brianustas.com/campus-safety-dashboard/)
+- Initial release: 09/23/15
+- Author: [Brian Ustas](http://brianustas.com)
+
 This is just a prototype and I created it over a weekend. The code is very
 rushed and needs to be refactored.
-
-Initial release: 09/23/15
 
 ## What is it?
 
