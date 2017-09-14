@@ -4,14 +4,13 @@
 - Initial release: 09/23/15
 - Author: [Brian Ustas](http://brianustas.com)
 
-This is just a prototype and I created it over a weekend. The code is very
-rushed and needs to be refactored.
+This is just a prototype that I created over a week. The code is very rushed and
+needs to be refactored.
 
 ## What is it?
 
-A dashboard intended for a campus police dispatcher that shows students in
-panic or uncomfortable, and the officers that are patrolling and/or responding to
-incidents.
+A dashboard for campus police dispatchers that shows distressed students and the
+officers that are patrolling and/or responding to incidents.
 
 It is just a prototype but demonstrates the key value driver. All the data is
 fake and randomly generated. For demonstration, many incidents are always
