@@ -72,7 +72,7 @@ class KnightlyApp extends React.Component {
               Welcome,
               <span className="name"> Nancy</span>
             </span>
-            <a className="header-button" href="http://www.northeastern.edu/nupd/">
+            <a className="header-button" href="https://www.northeastern.edu/nupd/">
               <div className="glyphicon glyphicon-log-out"></div>
             </a>
           </div>
