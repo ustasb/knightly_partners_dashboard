@@ -4,11 +4,6 @@
 - Initial release: 09/23/15
 - Author: [Brian Ustas](http://brianustas.com)
 
-This is just a prototype that I created over a week. The code is very rushed and
-needs to be refactored.
-
-## What is it?
-
 A dashboard for campus police dispatchers that shows distressed students and the
 officers that are patrolling and/or responding to incidents.
 
