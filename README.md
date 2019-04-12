@@ -1,6 +1,6 @@
 # Knightly Partners Dashboard
 
-- [brianustas.com/campus-safety-dashboard/](http://brianustas.com/campus-safety-dashboard/)
+- [brianustas.com/knightly-dashboard-demo/](http://brianustas.com/knightly-dashboard-demo/)
 - Initial release: 09/23/15
 - Author: [Brian Ustas](http://brianustas.com)
 
